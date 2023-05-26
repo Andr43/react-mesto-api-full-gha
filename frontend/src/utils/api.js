@@ -1,6 +1,6 @@
 class Api {
-  constructor(authorizationCode, url) {
-    this._authorizationCode = authorizationCode;
+  constructor(credentials, url) {
+    this._credentials = credentials;
     this._url = url;
   }
 
@@ -15,16 +15,18 @@ class Api {
 
   getUserInfo() {
     return fetch(this._url + "/users/me", {
+      credentials: this._credentials,
       headers: {
-        authorization: this._authorizationCode,
+        "Content-Type": "application/json",
       },
     }).then(this._checkStatus);
   }
 
   getCards() {
     return fetch(this._url + "/cards", {
+      credentials: this._credentials,
       headers: {
-        authorization: this._authorizationCode,
+        "Content-Type": "application/json",
       },
     }).then(this._checkStatus);
   }
@@ -32,8 +34,8 @@ class Api {
   updateUserInfo(name, about) {
     return fetch(this._url + "/users/me", {
       method: "PATCH",
+      credentials: this._credentials,
       headers: {
-        authorization: this._authorizationCode,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -46,8 +48,8 @@ class Api {
   addNewCard(heading, source) {
     return fetch(this._url + "/cards", {
       method: "POST",
+      credentials: this._credentials,
       headers: {
-        authorization: this._authorizationCode,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -60,8 +62,9 @@ class Api {
   deleteCard(id) {
     return fetch(this._url + "/cards/" + id, {
       method: "DELETE",
+      credentials: this._credentials,
       headers: {
-        authorization: this._authorizationCode,
+        "Content-Type": "application/json",
       },
     }).then(this._checkStatus);
   }
@@ -69,8 +72,9 @@ class Api {
   changeLikeCardStatus(id, isLiked) {
     return fetch(this._url + "/cards/" + id + "/likes", {
       method: `${isLiked ? "PUT" :  "DELETE"}`,
+      credentials: this._credentials,
       headers: {
-        authorization: this._authorizationCode,
+        "Content-Type": "application/json",
       },
     }).then(this._checkStatus);
   }
@@ -78,8 +82,8 @@ class Api {
   updateUserImage(imageSource) {
     return fetch(this._url + "/users/me/avatar", {
       method: "PATCH",
+      credentials: this._credentials,
       headers: {
-        authorization: this._authorizationCode,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -89,9 +93,9 @@ class Api {
   }
 }
 
-const api = new Api(
-  "61a5c5ab-9b62-4552-b9af-3bc710596f3a",
-  "https://nomoreparties.co/v1/cohort-59"
-);
+const api = new Api({
+  credentials: 'include',
+  url: 'https://api.mesto.students.nomoredomains.rocks'
+});
 
 export default api;
