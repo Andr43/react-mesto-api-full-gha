@@ -1,0 +1,28 @@
+.profile__background {
+  visibility: hidden;
+  opacity: 0;
+  margin: 0;
+  padding: 0;
+  min-width: 120px;
+  min-height: 120px;
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+@media screen and (max-width: 768px) {
+  .profile__background {
+    min-width: 140px;
+    min-height: 140px;
+    left: 121px;
+  }
+}
+@media screen and (min-width: 320px) and (max-width: 450px) {
+  .profile__background {
+    min-width: 120px;
+    min-height: 120px;
+    left: 81px;
+  }
+}
