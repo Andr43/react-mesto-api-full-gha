@@ -25,6 +25,7 @@ function Main(props) {
   function handleDeleteButtonClick() {
     props.onDeleteButtonClick();
   }
+  console.log(props.cards)
 
   return (
     <main className="main">
