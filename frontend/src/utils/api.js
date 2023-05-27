@@ -1,7 +1,7 @@
 class Api {
-  constructor(credentials, url) {
-    this._credentials = credentials;
-    this._url = url;
+  constructor(options) {
+    this._credentials = options.credentials;
+    this._url = options.url;
   }
 
   _checkStatus(res) {
