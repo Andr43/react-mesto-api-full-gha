@@ -25,9 +25,6 @@ function Main(props) {
   function handleDeleteButtonClick() {
     props.onDeleteButtonClick();
   }
-  props.cards.data.map((card) => {
-    console.log(card)
-  })
 
   return (
     <main className="main">
@@ -66,7 +63,7 @@ function Main(props) {
       </section>
       <section className="elements">
         <ul className="elements__list">
-          {props.cards.data.map((props) => (
+          {props.cards.data.map(({...props}) => (
             <Card
               key={props._id}
               card={props}
