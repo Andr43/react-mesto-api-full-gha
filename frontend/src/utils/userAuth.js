@@ -15,6 +15,7 @@ export const register = (email, password) => {
   return fetch(`${BASE_URL}/signup`, {
     method: "POST",
     headers: {
+      Accept: "application/json",
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
@@ -29,6 +30,7 @@ export const authorize = (email, password) => {
     method: "POST",
     credentials: 'include',
     headers: {
+      Accept: "application/json",
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
@@ -36,22 +38,19 @@ export const authorize = (email, password) => {
       email: email,
     }),
   })
-    .then(checkStatus)
-    .then((data) => {
-      if (data.token) {
-        localStorage.setItem("token", data.token);
-        return data;
-      }
-    });
+  .then((res) => {
+    return checkStatus(res);
+  });
 };
 
-export const getContent = (token) => {
+export const getContent = () => {
   return fetch(`${BASE_URL}/users/me`, {
     method: "GET",
     credentials: 'include',
     headers: {
+      Accept: "application/json",
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
     },
-  }).then(checkStatus);
+  }).then((res) => res.json())
+  .then((data) => data);
 };
