@@ -221,7 +221,7 @@ function App() {
 
   const handleTokenCheck = () => {
     if (localStorage.getItem("authorized")) {
-      const token = localStorage.getItem("authorized");
+      const authorized = localStorage.getItem("authorized");
       if (authorized) {
         userAuth
           .getContent()
