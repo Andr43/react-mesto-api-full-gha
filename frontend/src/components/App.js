@@ -271,7 +271,7 @@ function App() {
           form.reset();
           setRegisteredIn(true);
           handleShowAuthorisationResult();
-          navigate("/sign-in", { replace: true });
+          navigate("/signin", { replace: true });
         }
         if (!res.data) {
           setRegisteredIn(false);

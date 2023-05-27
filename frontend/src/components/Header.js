@@ -25,12 +25,12 @@ function Header(props) {
 
   function signOut() {
     if (
-      !location.pathname.includes("/sign-up") ||
-      !location.pathname.includes("/sign-in")
+      !location.pathname.includes("/signup") ||
+      !location.pathname.includes("/signin")
     ) {
       props.setLoggedIn(false);
       localStorage.removeItem("token");
-      navigate("/sign-in");
+      navigate("/signin");
     }
   }
 
@@ -48,11 +48,11 @@ function Header(props) {
         <Link
           className="header__paragraph header__paragraph_link"
           onClick={signOut}
-          to={location.pathname.includes("sign-in") ? "/sign-up" : "/sign-in"}
+          to={location.pathname.includes("signin") ? "/signup" : "/signin"}
         >
-          {location.pathname.includes("sign-in")
+          {location.pathname.includes("signin")
             ? "Регистрация"
-            : location.pathname.includes("/sign-up")
+            : location.pathname.includes("/signup")
             ? "Войти"
             : "Выйти"}
         </Link>
