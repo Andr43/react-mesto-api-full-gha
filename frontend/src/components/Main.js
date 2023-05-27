@@ -63,7 +63,7 @@ function Main(props) {
       </section>
       <section className="elements">
         <ul className="elements__list">
-          {props.cards.map(({ ...props }) => (
+          {props.cards.map((props) => (
             <Card
               key={props._id}
               card={props}
