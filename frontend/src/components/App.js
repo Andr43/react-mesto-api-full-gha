@@ -43,6 +43,7 @@ function App() {
     api
       .getUserInfo()
       .then((userInfo) => {
+        console.log(userInfo);
         setCurrentUser({
           name: userInfo.name,
           about: userInfo.about,
@@ -68,8 +69,6 @@ function App() {
       });
     handleTokenCheck();
   }, []);
-
-  console.log(cards);
 
   function handleCardLike(card) {
     const isLiked = card.likes.some((i) => i === currentUser.id);
