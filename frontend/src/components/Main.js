@@ -26,6 +26,8 @@ function Main(props) {
     props.onDeleteButtonClick();
   }
 
+  console.log(props.cards)
+
   return (
     <main className="main">
       <section className="profile">
