@@ -319,13 +319,13 @@ function App() {
           }
         />
         <Route
-          path="/sign-in"
+          path="/signin"
           element={
             <Login onLoginSubmit={onLoginSubmit} onClose={closeAllPopups} />
           }
         />
         <Route
-          path="/sign-up"
+          path="/signup"
           element={<Register onRegisterSubmit={onRegisterSubmit} />}
         />
       </Routes>
