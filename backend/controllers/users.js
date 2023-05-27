@@ -9,7 +9,7 @@ const StatusConflictError = require('../errors/status-conflict-error');
 module.exports.getUsers = (req, res, next) => {
   User.find({})
     .then((users) => {
-      res.send({ data: users });
+      res.send(users);
     })
     .catch(next);
 };
@@ -20,7 +20,7 @@ module.exports.getUserInfo = (req, res, next) => {
       if (!user) {
         throw new NotFoundError('Такого пользователя не существует.');
       }
-      res.send({ data: user });
+      res.send(user);
     })
     .catch(next);
 };
@@ -29,7 +29,7 @@ module.exports.getUserById = (req, res, next) => {
   User.findById(req.params.userId)
     .orFail()
     .then((user) => {
-      res.send({ data: user });
+      res.send(user);
     })
     .catch((err) => {
       if (err instanceof CastError) {
@@ -50,7 +50,7 @@ module.exports.createUser = (req, res, next) => {
       password: hash,
     }))
     .then((user) => {
-      res.send({ data: user });
+      res.send(user);
     })
     .catch((err) => {
       if (err.code === 11000) {
@@ -73,7 +73,7 @@ module.exports.updateUser = (req, res, next) => {
   )
     .orFail()
     .then((user) => {
-      res.send({ data: user });
+      res.send(user);
     })
     .catch((err) => {
       if (err instanceof DocumentNotFoundError) {
@@ -96,7 +96,7 @@ module.exports.updateUserAvatar = (req, res, next) => {
   )
     .orFail()
     .then((user) => {
-      res.send({ data: user });
+      res.send(user);
     })
     .catch((err) => {
       if (err instanceof DocumentNotFoundError) {
@@ -117,7 +117,7 @@ module.exports.login = (req, res, next) => {
           maxAge: 3600000 * 24 * 7,
           httpOnly: true,
         })
-        .send({ data: user })
+        .send(user)
         .end();
     })
     .catch((err) => {
