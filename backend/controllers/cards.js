@@ -21,7 +21,7 @@ module.exports.createCard = (req, res, next) => {
 
   Card.create({ name, link, owner: userId })
     .then((card) => {
-      res.status(HTTP_STATUS_CREATED).send({ card });
+      res.status(HTTP_STATUS_CREATED).send(card);
     })
     .catch((err) => {
       if (err instanceof ValidationError) {
@@ -61,7 +61,7 @@ module.exports.putLike = (req, res, next) => {
     .orFail()
     .populate(['owner', 'likes'])
     .then((cards) => {
-      res.send({ cards });
+      res.send(cards);
     })
     .catch((err) => {
       if (err instanceof DocumentNotFoundError) {
@@ -80,7 +80,7 @@ module.exports.deleteLike = (req, res, next) => {
   )
     .orFail()
     .then((cards) => {
-      res.send({ cards });
+      res.send(cards);
     })
     .catch((err) => {
       if (err instanceof DocumentNotFoundError) {
