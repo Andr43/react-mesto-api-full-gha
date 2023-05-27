@@ -76,7 +76,7 @@ function App() {
       .changeLikeCardStatus(card._id, !isLiked)
       .then((newCard) => {
         setCards((state) => {
-          console.log(state);
+          console.log(state.data);
           state.data.map((c) => (c._id === card._id ? newCard : c))
         });
       })
