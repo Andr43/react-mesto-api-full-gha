@@ -220,11 +220,11 @@ function App() {
   }
 
   const handleTokenCheck = () => {
-    if (localStorage.getItem("token")) {
-      const token = localStorage.getItem("token");
-      if (token) {
+    if (localStorage.getItem("authorized")) {
+      const token = localStorage.getItem("authorized");
+      if (authorized) {
         userAuth
-          .getContent(token)
+          .getContent()
           .then((res) => {
             if (res) {
               setLoggedIn(true);
@@ -245,13 +245,14 @@ function App() {
     userAuth
       .authorize(email, password)
       .then((data) => {
-        if (data.token) {
+        if (data) {
           form.reset();
           handleShowAuthorisationResult();
           setLoggedIn(true);
+          localStorage.setItem('authorized', 'true');
           navigate("/", { replace: true });
         }
-        if (!data.token) {
+        if (!data) {
           setLoggedIn(false);
           handleShowAuthorisationResult();
         }
