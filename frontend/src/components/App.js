@@ -69,9 +69,11 @@ function App() {
     handleTokenCheck();
   }, []);
 
+  console.log(cards);
+
   function handleCardLike(card) {
     const isLiked = card.likes.some((i) => i === currentUser.id);
-    console.log(card);
+    console.log(currentUser.id, i);
     api
       .changeLikeCardStatus(card._id, !isLiked)
       .then((newCard) => {
