@@ -13,9 +13,9 @@ function Header(props) {
   }, []);
 
   const getEmail = () => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      userAuth.getContent(token).then((res) => {
+    const authorized = localStorage.getItem("authorized");
+    if (authorized) {
+      userAuth.getContent(authorized).then((res) => {
         setUserEmail(res.data.email);
       });
     }
@@ -29,7 +29,7 @@ function Header(props) {
       !location.pathname.includes("/signin")
     ) {
       props.setLoggedIn(false);
-      localStorage.removeItem("token");
+      localStorage.removeItem("authorized");
       navigate("/signin");
     }
   }
