@@ -1,6 +1,7 @@
 import headerLogo from "../images/header__logo.svg"; 
 import React, { useState, useEffect } from "react"; 
 import { Link, useLocation } from "react-router-dom"; 
+import * as userAuth from "../utils/userAuth";
 
 function Header(props) { 
   const location = useLocation(); 
@@ -9,12 +10,14 @@ function Header(props) {
 
   useEffect(() => { 
     getEmail(); 
-  }, [props.loggedIn]); 
+  }, []); 
 
   const getEmail = () => { 
     const authorized = localStorage.getItem("authorized"); 
     if (authorized) { 
-        setUserEmail(props.user.email); 
+      userAuth.getContent(authorized).then((res) => { 
+        setUserEmail(res.email); 
+      });  
     } 
   }; 
 
