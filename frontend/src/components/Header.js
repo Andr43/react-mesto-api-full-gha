@@ -10,7 +10,7 @@ function Header(props) {
 
   useEffect(() => { 
     getEmail(); 
-  }, []); 
+  }, [props.loggedIn]); 
 
   const getEmail = () => { 
     const authorized = localStorage.getItem("authorized"); 
