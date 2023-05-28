@@ -287,9 +287,6 @@ function App() {
   };
 
   const onSignOut = () => {
-    if(!location.pathname.includes("/signup") || 
-    !location.pathname.includes("/signin") || 
-    !location.pathname.includes("/signout")){
       userAuth
       .signout()
       .then((res) => {
@@ -300,7 +297,6 @@ function App() {
       .catch((err) => {
         showError(err);
       });
-    }
   };
 
   return (
