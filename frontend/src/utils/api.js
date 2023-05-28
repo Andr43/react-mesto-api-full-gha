@@ -9,7 +9,7 @@ class Api {
       return res.json();
     }
     return Promise.reject(
-      `Ошибка: ${res.status}. ${res.message}.`
+      `Ошибка: ${res.status}.`
     );
   }
 

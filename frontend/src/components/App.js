@@ -304,7 +304,7 @@ function App() {
 
   return (
     <>
-      <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+      <Header loggedIn={loggedIn} signOut={signOut} />
       <Routes>
         <Route
           path="/"

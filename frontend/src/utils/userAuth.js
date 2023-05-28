@@ -6,7 +6,7 @@ const checkStatus = (res) => {
   }
   return Promise.reject(
     console.error(
-      `Ошибка: ${res.status}. ${res}.`
+      `Ошибка: ${res.status}.`
     ),
   );
 };
