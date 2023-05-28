@@ -54,17 +54,3 @@ export const getContent = () => {
   }).then((res) => res.json())
   .then((data) => data);
 };
-
-export const signout = () => {
-  return fetch(`${BASE_URL}/signout`, {
-    method: "GET",
-    credentials: 'include',
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    },
-    })
-    .then((res) => {
-      return checkStatus(res);
-});
-}
