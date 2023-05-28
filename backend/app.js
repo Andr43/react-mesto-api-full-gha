@@ -8,8 +8,16 @@ const cookieParser = require('cookie-parser');
 const { errors } = require('celebrate');
 const router = require('./routes/index');
 const { centralErrorHandler } = require('./errors/handlers/central-error-handler');
+const {
+  createUser, login, signout,
+} = require('./controllers/users');
+const auth = require('./middlewares/auth');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const corsHandler = require('./middlewares/corsHandler');
+const {
+  registrationValidator,
+  loginValidator,
+} = require('./validators/validator');
 
 mongoose.connect('mongodb://127.0.0.1/mestodb', {
   useNewUrlParser: true,
@@ -23,6 +31,10 @@ app.get('/crash-test', () => {
     throw new Error('Сервер сейчас упадёт');
   }, 0);
 });
+app.post('/signup', registrationValidator, createUser);
+app.post('/signin', loginValidator, login);
+app.use(auth);
+app.get('/signout', signout);
 app.use(router);
 app.use(errorLogger);
 app.use(errors());
