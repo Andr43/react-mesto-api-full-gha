@@ -9,7 +9,7 @@ const { errors } = require('celebrate');
 const router = require('./routes/index');
 const { centralErrorHandler } = require('./errors/handlers/central-error-handler');
 const {
-  createUser, login, signout,
+  createUser, login,
 } = require('./controllers/users');
 const auth = require('./middlewares/auth');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
@@ -34,7 +34,6 @@ app.get('/crash-test', () => {
 app.post('/signup', registrationValidator, createUser);
 app.post('/signin', loginValidator, login);
 app.use(auth);
-app.get('/signout', signout);
 app.use(router);
 app.use(errorLogger);
 app.use(errors());
