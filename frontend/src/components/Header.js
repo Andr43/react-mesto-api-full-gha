@@ -12,9 +12,8 @@ function Header(props) {
     getEmail(); 
   }, []); 
 
-  const getEmail = () => { 
-    const authorized = localStorage.getItem("authorized"); 
-    if (authorized) { 
+  const getEmail = () => {  
+    if (props.loggedIn) { 
         setUserEmail(props.user.email); 
     } 
   }; 
