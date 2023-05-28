@@ -6,6 +6,7 @@ const NotFoundError = require('../errors/not-found-error');
 const BadRequestError = require('../errors/bad-request-error');
 const StatusConflictError = require('../errors/status-conflict-error');
 const { NODE_ENV, JWT_SECRET } = process.env;
+console.log(JWT_SECRET);
 
 module.exports.getUsers = (req, res, next) => {
   User.find({})
