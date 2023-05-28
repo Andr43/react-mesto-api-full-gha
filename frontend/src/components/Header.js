@@ -23,20 +23,6 @@ function Header(props) {
 
   const navigate = useNavigate(); 
 
-  function signOut() { 
-    if ( 
-      !location.pathname.includes("/signup") || 
-      !location.pathname.includes("/signin") 
-    ) { 
-      props.setLoggedIn(false); 
-      localStorage.removeItem("authorized"); 
-      navigate("/signin"); 
-    } 
-
-  } 
-
- 
-
   return ( 
     <header className="header"> 
       <img src={headerLogo} alt="логотип Место" className="header__logo" /> 
@@ -50,7 +36,9 @@ function Header(props) {
         </p> 
         <Link 
           className="header__paragraph header__paragraph_link" 
-          onClick={signOut} 
+          onClick={!location.pathname.includes("/signup") || 
+          !location.pathname.includes("/signin") || 
+          !location.pathname.includes("/signout") ? props.onSignOut : ''} 
           to={location.pathname.includes("signin") ? "/signup" : "/signin"} 
         > 
           {location.pathname.includes("signin") 

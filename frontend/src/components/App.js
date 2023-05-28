@@ -285,9 +285,22 @@ function App() {
       });
   };
 
+  const onSignOut = () => {
+    userAuth
+      .signout()
+      .then((res) => {
+        setLoggedIn(false); 
+        localStorage.removeItem("authorized"); 
+        navigate("/signin"); 
+      })
+      .catch((err) => {
+        showError(err);
+      });
+  };
+
   return (
     <>
-      <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+      <Header loggedIn={loggedIn} onSignOut={onSignOut} />
       <Routes>
         <Route
           path="/"
