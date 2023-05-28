@@ -34,8 +34,8 @@ app.get('/crash-test', () => {
 app.post('/signup', registrationValidator, createUser);
 app.post('/signin', loginValidator, login);
 app.use(auth);
-app.get('/signout', signout);
 app.use(router);
+app.get('/signout', signout);
 app.use(errorLogger);
 app.use(errors());
 app.use(centralErrorHandler);
