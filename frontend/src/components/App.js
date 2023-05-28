@@ -297,14 +297,14 @@ function App() {
     .then((res) => {
         setLoggedIn(false);
         localStorage.removeItem("authorized");
-        navigate('/signin', { replace: true });
+        navigate('signin', { replace: true });
       }
     )}
   }
 
   return (
     <>
-      <Header loggedIn={loggedIn} signOut={signOut} />
+      <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
       <Routes>
         <Route
           path="/"
