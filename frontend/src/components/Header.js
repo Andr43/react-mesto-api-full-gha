@@ -1,9 +1,10 @@
 import headerLogo from "../images/header__logo.svg"; 
 import React, { useState, useEffect } from "react"; 
-import { Link } from "react-router-dom"; 
+import { Link, useLocation } from "react-router-dom"; 
 import * as userAuth from "../utils/userAuth"; 
 
-function Header(props) {  
+function Header(props) { 
+  const location = useLocation(); 
   const [userEmail, setUserEmail] = useState(""); 
 
   useEffect(() => { 
