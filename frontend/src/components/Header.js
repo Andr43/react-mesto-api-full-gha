@@ -33,7 +33,8 @@ function Header(props) {
         </p>
         <Link
           className="header__paragraph header__paragraph_link"
-          onClick={props.signOut}
+          onClick={!location.pathname.includes("/signup") ||
+          !location.pathname.includes("/signin") ? props.signOut : ''}
           to={location.pathname.includes("signin") ? "/signup" : "/signin"}
         >
           {location.pathname.includes("signin")
