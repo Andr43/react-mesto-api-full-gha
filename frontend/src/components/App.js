@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import profileAvatar from "../images/profile__avatar.jpg";
 import Header from "./Header";
 import Main from "./Main";
@@ -34,6 +34,7 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [registeredIn, setRegisteredIn] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation(); 
 
   function showError(err) {
     console.error(err);
@@ -286,7 +287,10 @@ function App() {
   };
 
   const onSignOut = () => {
-    userAuth
+    if(!location.pathname.includes("/signup") || 
+    !location.pathname.includes("/signin") || 
+    !location.pathname.includes("/signout")){
+      userAuth
       .signout()
       .then((res) => {
         setLoggedIn(false); 
@@ -296,6 +300,7 @@ function App() {
       .catch((err) => {
         showError(err);
       });
+    }
   };
 
   return (
