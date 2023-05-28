@@ -9,10 +9,12 @@ const {
   registrationValidator,
   loginValidator,
 } = require('../validators/validator');
+const auth = require('../middlewares/auth');
 
-app.post('/signup', registrationValidator, createUser);
-app.post('/signin', loginValidator, login);
-app.get('/signout', signout);
+router.post('/signup', registrationValidator, createUser);
+router.post('/signin', loginValidator, login);
+router.use(auth);
+router.get('/signout', signout);
 router.use('/users', userRouter);
 router.use('/cards', cardRouter);
 router.use('*', (req, res, next) => {
