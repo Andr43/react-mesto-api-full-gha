@@ -59,7 +59,9 @@ module.exports.putLike = (req, res, next) => {
     { new: true },
   )
     .orFail()
-    .populate(['owner', 'likes'])
+    .then((cards) =>
+      cards.populate(['owner', 'likes'])
+    )
     .then((cards) => {
       res.send(cards);
     })
@@ -79,6 +81,9 @@ module.exports.deleteLike = (req, res, next) => {
     { new: true },
   )
     .orFail()
+    .then((cards) =>
+      cards.populate(['owner', 'likes'])
+    )
     .then((cards) => {
       res.send(cards);
     })
