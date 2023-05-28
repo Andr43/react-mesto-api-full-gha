@@ -59,7 +59,6 @@ module.exports.putLike = (req, res, next) => {
     { new: true },
   )
     .orFail()
-    .populate(['owner', 'likes'])
     .then((cards) => {
       res.send(cards);
     })
