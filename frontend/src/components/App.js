@@ -289,17 +289,17 @@ function App() {
   };
 
   const signOut = () => {
+    if (
+      !location.pathname.includes("/signup") ||
+      !location.pathname.includes("/signin")
+    ) {
     userAuth.signout()
     .then((res) => {
-      if (
-        !location.pathname.includes("/signup") ||
-        !location.pathname.includes("/signin")
-      ) {
         setLoggedIn(false);
         localStorage.removeItem("authorized");
         navigate("/signin");
       }
-    })
+    )}
   }
 
   return (
