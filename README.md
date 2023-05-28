@@ -4,11 +4,11 @@
   
 Пожалуйста, прикрепите в это описание ссылку на сайт, размещенный на Яндекс.Облаке.
 
-Адрес репозитория: 
+Адрес репозитория: https://github.com/Andr43/react-mesto-api-full-gha.git
 
 ## Ссылки на проект
 
-IP-адрес 51.250.29.90
+IP 51.250.29.90
 
 Frontend https://mesto.students.nomoredomains.rocks/
 
