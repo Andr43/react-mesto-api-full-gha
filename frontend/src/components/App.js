@@ -290,7 +290,7 @@ function App() {
 
   return (
     <>
-      <Header loggedIn={loggedIn} onSignOut={onSignOut} />
+      <Header loggedIn={loggedIn} onSignOut={onSignOut} user={currentUser} />
       <Routes>
         <Route
           path="/"

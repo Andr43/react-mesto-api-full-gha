@@ -2,11 +2,9 @@ import headerLogo from "../images/header__logo.svg";
 import React, { useState, useEffect, useContext } from "react"; 
 import { Link, useLocation } from "react-router-dom"; 
 import * as userAuth from "../utils/userAuth"; 
-import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 function Header(props) { 
   const location = useLocation(); 
-  const currentUser = useContext(CurrentUserContext);
   const [userEmail, setUserEmail] = useState(""); 
 
   useEffect(() => { 
@@ -17,8 +15,7 @@ function Header(props) {
     const authorized = localStorage.getItem("authorized"); 
 
     if (authorized) { 
-      console.log(currentUser)
-        setUserEmail(currentUser); 
+        setUserEmail(props.user.email); 
     } 
   }; 
 
