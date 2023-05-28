@@ -17,7 +17,8 @@ function Header(props) {
     const authorized = localStorage.getItem("authorized"); 
 
     if (authorized) { 
-        setUserEmail(currentUser.email); 
+      console.log(currentUser)
+        setUserEmail(currentUser); 
     } 
   }; 
 
