@@ -6,7 +6,6 @@ import * as userAuth from "../utils/userAuth";
 function Header(props) { 
   const location = useLocation(); 
   const [userEmail, setUserEmail] = useState(""); 
-  console.log(userEmail)
 
   useEffect(() => { 
     getEmail(); 
