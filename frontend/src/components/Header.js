@@ -19,7 +19,10 @@ function Header(props) {
         setUserEmail(res.email); 
       }); 
     } 
-  };  
+  }; 
+
+  const navigate = useNavigate(); 
+
 
   return ( 
     <header className="header"> 
@@ -34,7 +37,9 @@ function Header(props) {
         </p> 
         <Link 
           className="header__paragraph header__paragraph_link" 
-          onClick={props.onSignOut} 
+          onClick={!location.pathname.includes("/signup") || 
+          !location.pathname.includes("/signin") || 
+          !location.pathname.includes("/signout") ? props.onSignOut : ''} 
           to={location.pathname.includes("signin") ? "/signup" : "/signin"} 
         > 
           {location.pathname.includes("signin") 
