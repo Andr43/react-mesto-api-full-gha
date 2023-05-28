@@ -21,9 +21,6 @@ function Header(props) {
     } 
   }; 
 
-  const navigate = useNavigate(); 
-
-
   return ( 
     <header className="header"> 
       <img src={headerLogo} alt="логотип Место" className="header__logo" /> 

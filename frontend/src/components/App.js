@@ -40,35 +40,22 @@ function App() {
   }
 
   useEffect(() => {
-    api
-      .getUserInfo()
-      .then((userInfo) => {
+    handleTokenCheck();
+    loggedIn &&
+    Promise.all([api.getUserInfo(), api.getCards()])
+      .then(([userInfo, cardInfo]) => {
         setCurrentUser({
           name: userInfo.name,
           about: userInfo.about,
           avatar: userInfo.avatar,
           id: userInfo._id,
         });
-      })
-      .catch((err) => {
-        showError(err);
-        setCurrentUser({
-          name: "Жак-Ив Кусто",
-          about: "Исследователь океана",
-          avatar: profileAvatar,
-        });
-      });
-
-    api
-      .getCards()
-      .then((cardInfo) => {
-        setCards(cardInfo);
+        setCards(cardInfo.reverse());
       })
       .catch((err) => {
         showError(err);
       });
-    handleTokenCheck();
-  }, []);
+  }, [loggedIn, handleTokenCheck]);
 
   function handleCardLike(card) {
     const isLiked = card.likes.some((i) => i === currentUser.id);
