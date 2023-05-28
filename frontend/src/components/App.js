@@ -48,6 +48,7 @@ function App() {
           name: userInfo.name,
           about: userInfo.about,
           avatar: userInfo.avatar,
+          email: userInfo.email,
           id: userInfo._id,
         });
         setCards(cardInfo.reverse());
@@ -284,7 +285,7 @@ function App() {
     .catch((err) => {
       showError(err);
     });
-   }
+    }
   };
 
   return (
