@@ -1,5 +1,5 @@
 import headerLogo from "../images/header__logo.svg"; 
-import React, { useState, useEffect } from "react"; 
+import React, { useState, useEffect, useContext } from "react"; 
 import { Link, useLocation } from "react-router-dom"; 
 import * as userAuth from "../utils/userAuth"; 
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
