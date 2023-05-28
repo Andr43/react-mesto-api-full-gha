@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import profileAvatar from "../images/profile__avatar.jpg";
 import Header from "./Header";
 import Main from "./Main";
@@ -34,7 +34,6 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [registeredIn, setRegisteredIn] = useState(false);
   const navigate = useNavigate();
-  const location = useLocation();
 
   function showError(err) {
     console.error(err);
@@ -59,6 +58,7 @@ function App() {
           avatar: profileAvatar,
         });
       });
+
     api
       .getCards()
       .then((cardInfo) => {
@@ -77,7 +77,7 @@ function App() {
       .then((newCard) => {
         setCards((state) =>
           state.map((c) => (c._id === card._id ? newCard : c))
-    );
+        );
       })
       .catch((err) => {
         showError(err);
@@ -98,15 +98,10 @@ function App() {
   function handleEscClose(esc) {
     if (esc.key === "Escape" || esc.key === "Esc") {
       setIsPopupEditOpened(isPopupEditOpened);
-
       setIsPopupAddPlaceOpened(isPopupAddPlaceOpened);
-
       setIsPopupEditImageOpened(isPopupEditImageOpened);
-
       setIsPopupDeleteCardOpened(isPopupDeleteCardOpened);
-
       setIsPopupResultInfoOpened(isPopupResultInfoOpened);
-
       setSelectedCard({});
     }
   }
@@ -126,6 +121,7 @@ function App() {
     setIsMouseOverAvatar(false);
     document.addEventListener("keydown", handleEscClose);
   }
+
   function handleDeleteCardClick() {
     setIsPopupDeleteCardOpened(!isPopupDeleteCardOpened);
     document.addEventListener("keydown", handleEscClose);
@@ -168,7 +164,6 @@ function App() {
       setIsPopupResultInfoOpened(isPopupResultInfoOpened);
       setSelectedCard(selectedCard);
     }
-
     document.removeEventListener("keydown", handleEscClose);
   }
 
@@ -183,6 +178,7 @@ function App() {
         });
         setIsPopupEditOpened(false);
       })
+
       .catch((err) => {
         showError(err);
       });
@@ -198,6 +194,7 @@ function App() {
         });
         setIsPopupEditImageOpened(false);
       })
+
       .catch((err) => {
         showError(err);
       });
@@ -249,7 +246,7 @@ function App() {
           form.reset();
           handleShowAuthorisationResult();
           setLoggedIn(true);
-          localStorage.setItem('authorized', 'true');
+          localStorage.setItem("authorized", "true");
           navigate("/", { replace: true });
         }
         if (!data) {
@@ -268,13 +265,13 @@ function App() {
     userAuth
       .register(email, password)
       .then((res) => {
-        if (res) {
+        if (res.data) {
           form.reset();
           setRegisteredIn(true);
           handleShowAuthorisationResult();
           navigate("/signin", { replace: true });
         }
-        if (!res) {
+        if (!res.data) {
           setRegisteredIn(false);
           handleShowAuthorisationResult();
           return;
@@ -288,20 +285,9 @@ function App() {
       });
   };
 
-  const signOut = () => {
-    userAuth.signout()
-    .then((res) => {
-     {
-        setLoggedIn(false);
-        localStorage.removeItem("authorized");
-        navigate("/signin");
-      }
-    })
-  }
-
   return (
     <>
-      <Header loggedIn={loggedIn} signOut={signOut} />
+      <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
       <Routes>
         <Route
           path="/"
