@@ -38,9 +38,7 @@ function App() {
   function showError(err) {
     console.error(err);
   }
-
-  console.log(currentUser.email)
-
+  
   useEffect(() => {
     handleTokenCheck();
     loggedIn &&
