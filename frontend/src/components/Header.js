@@ -1,10 +1,9 @@
 import headerLogo from "../images/header__logo.svg"; 
 import React, { useState, useEffect } from "react"; 
-import { Link, useLocation, useNavigate } from "react-router-dom"; 
+import { Link } from "react-router-dom"; 
 import * as userAuth from "../utils/userAuth"; 
 
-function Header(props) { 
-  const location = useLocation(); 
+function Header(props) {  
   const [userEmail, setUserEmail] = useState(""); 
 
   useEffect(() => { 
@@ -34,9 +33,7 @@ function Header(props) {
         </p> 
         <Link 
           className="header__paragraph header__paragraph_link" 
-          onClick={!location.pathname.includes("/signup") || 
-          !location.pathname.includes("/signin") || 
-          !location.pathname.includes("/signout") ? props.onSignOut : ''} 
+          onClick={props.onSignOut} 
           to={location.pathname.includes("signin") ? "/signup" : "/signin"} 
         > 
           {location.pathname.includes("signin") 
