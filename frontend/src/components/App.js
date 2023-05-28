@@ -267,13 +267,13 @@ function App() {
     userAuth
       .register(email, password)
       .then((res) => {
-        if (res.data) {
+        if (res) {
           form.reset();
           setRegisteredIn(true);
           handleShowAuthorisationResult();
           navigate("/signin", { replace: true });
         }
-        if (!res.data) {
+        if (!res) {
           setRegisteredIn(false);
           handleShowAuthorisationResult();
           return;
