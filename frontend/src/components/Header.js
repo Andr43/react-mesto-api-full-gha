@@ -34,7 +34,7 @@ function Header(props) {
         <Link
           className="header__paragraph header__paragraph_link"
           onClick={!location.pathname.includes("/signup") ||
-          !location.pathname.includes("/signin") ? props.signOut : ''}
+          !location.pathname.includes("/signin") || !location.pathname.includes("/signout") ? props.signOut : ''}
           to={location.pathname.includes("signin") ? "/signup" : "/signin"}
         >
           {location.pathname.includes("signin")
