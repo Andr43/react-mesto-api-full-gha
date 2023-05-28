@@ -127,7 +127,3 @@ module.exports.login = (req, res, next) => {
       } else next(err);
     });
 };
-
-module.exports.signout = (req, res, next) => {
-  res.clearCookie('jwt').send({ message: 'Выход выполнен успешно.' });
-};
