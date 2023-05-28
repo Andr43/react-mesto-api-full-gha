@@ -34,6 +34,7 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [registeredIn, setRegisteredIn] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
 
   function showError(err) {
     console.error(err);
@@ -287,9 +288,23 @@ function App() {
       });
   };
 
+  const signOut = () => {
+    userAuth.signout()
+    .then((res) => {
+      if (
+        !location.pathname.includes("/signup") ||
+        !location.pathname.includes("/signin")
+      ) {
+        setLoggedIn(false);
+        localStorage.removeItem("authorized");
+        navigate("/signin");
+      }
+    })
+  }
+
   return (
     <>
-      <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+      <Header loggedIn={loggedIn} signOut={signOut} />
       <Routes>
         <Route
           path="/"
