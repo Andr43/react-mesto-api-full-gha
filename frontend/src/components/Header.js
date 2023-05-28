@@ -6,16 +6,15 @@ import * as userAuth from "../utils/userAuth";
 function Header(props) { 
   const location = useLocation(); 
   const [userEmail, setUserEmail] = useState(""); 
+  console.log(userEmail)
 
   useEffect(() => { 
     getEmail(); 
   }, []); 
-  
+
   const getEmail = () => { 
     const authorized = localStorage.getItem("authorized"); 
-
     if (authorized) { 
-      console.log('sdfsdfsdf')
         setUserEmail(props.user.email); 
     } 
   }; 
