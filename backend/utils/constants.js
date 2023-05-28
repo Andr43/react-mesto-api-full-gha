@@ -12,6 +12,8 @@ const {
 
 const regex = /https?:\/\/(w{1,3}\.)?[\w+\-._~:/?#[\]@!$&'()*+,;=]+/;
 
+const { JWT_SECRET = '1cd788ce08225bf99275db7975d943f173406d91b5d5ac3fe020b2c890e1a108' } = process.env;
+
 module.exports = {
   HTTP_STATUS_NOT_FOUND,
   HTTP_STATUS_BAD_REQUEST,
@@ -21,4 +23,5 @@ module.exports = {
   HTTP_STATUS_CONFLICT,
   HTTP_STATUS_FORBIDDEN,
   regex,
+  JWT_SECRET,
 };
