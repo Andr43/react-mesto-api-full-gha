@@ -4,12 +4,12 @@
   
 Пожалуйста, прикрепите в это описание ссылку на сайт, размещенный на Яндекс.Облаке.
 
-Адрес репозитория: https://github.com/...
+Адрес репозитория: 
 
 ## Ссылки на проект
 
-IP-адрес x.x.x.x
+IP-адрес 51.250.29.90
 
-Frontend https://...
+Frontend https://mesto.students.nomoredomains.rocks/
 
-Backend https://...
+Backend https://api.mesto.students.nomoredomains.rocks/
