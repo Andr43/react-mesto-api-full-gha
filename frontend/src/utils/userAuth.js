@@ -6,7 +6,7 @@ const checkStatus = (res) => {
   }
   return Promise.reject(
     console.error(
-      `Ошибка: ${res.status}. Проверьте правильность введенных данных.`
+      `Ошибка: ${res.status}. ${res.message}.`
     ),
   );
 };

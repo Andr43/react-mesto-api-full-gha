@@ -297,7 +297,7 @@ function App() {
     .then((res) => {
         setLoggedIn(false);
         localStorage.removeItem("authorized");
-        navigate('sign-in', { replace: true });
+        navigate('/signin', { replace: true });
       }
     )}
   }
